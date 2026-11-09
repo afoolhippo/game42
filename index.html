@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>てがきタイヤグランプリ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=20261109-2">
+</head>
+<body>
+
+<!-- タイトル画面 -->
+<section id="title-screen" class="screen active">
+
+  <div class="safe-top"></div>
+
+  <img
+    src="title.png"
+    alt="てがきタイヤグランプリ"
+    class="title-image"
+  >
+
+  <div class="howto-box">
+    <h2>あそびかた</h2>
+
+    <p>🛞 タイヤを自由に描こう！</p>
+    <p>🚗 カバカーに装着！</p>
+    <p>⛰️ 山あり谷ありの道をどこまで走れる？</p>
+    <p>💪 タイヤの耐久力が尽きたら終了！</p>
+  </div>
+
+  <button id="start-btn" class="main-btn">
+    スタート
+  </button>
+
+</section>
+
+<!-- タイヤ設計画面 -->
+<section id="draw-screen" class="screen">
+
+  <div class="top-bar">
+    <button id="back-title-btn" class="small-btn">
+      タイトルへ
+    </button>
+  </div>
+
+  <h2>
+    タイヤ設計
+  </h2>
+
+  <div class="course-description">
+    指でタイヤを描いてください
+  </div>
+
+  <div class="draw-wrapper">
+
+    <canvas
+      id="draw-canvas"
+      width="280"
+      height="280"
+    ></canvas>
+
+    <div class="draw-buttons">
+
+      <button id="clear-btn" class="sub-btn">
+        描き直し
+      </button>
+
+      <button id="race-btn" class="main-btn">
+        走行開始！
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- レース画面 -->
+<section id="race-screen" class="screen">
+
+  <div class="top-bar">
+    <button id="race-title-btn" class="small-btn">
+      タイトルへ
+    </button>
+  </div>
+
+  <div class="race-ui">
+
+    <div id="distance-meter">
+      0m
+    </div>
+
+    <div class="stamina-wrap">
+
+      <span>
+        たいきゅう
+      </span>
+
+      <div class="stamina-bar">
+        <div id="stamina-fill"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="race-area">
+
+    <canvas
+      id="race-canvas"
+      width="420"
+      height="720"
+    ></canvas>
+
+    <div id="commentary">
+      スタート！
+    </div>
+
+  </div>
+
+</section>
+
+<!-- 結果画面 -->
+<section id="result-screen" class="screen">
+
+  <div class="safe-top"></div>
+
+  <h2 id="result-title">
+    走行結果
+  </h2>
+
+  <div class="result-box">
+
+    <p id="result-distance">
+      0m
+    </p>
+
+    <p id="result-stars" aria-hidden="true"></p>
+
+    <p id="result-rank"></p>
+
+    <p id="result-comment"></p>
+
+  </div>
+
+  <div id="result-buttons" class="result-buttons">
+    <button type="button" id="share-btn" class="sub-btn" disabled>Xでシェア</button>
+    <button type="button" id="register-btn" class="sub-btn" disabled>記録を登録</button>
+    <button type="button" id="retry-btn" class="main-btn" disabled>もう1回遊ぶ</button>
+    <button type="button" id="home-btn" class="sub-btn" disabled>カバゲーセンへ</button>
+  </div>
+
+</section>
+
+<audio id="race-bgm" src="bgm.mp3" preload="auto" loop></audio>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="game.js?v=20261109-2"></script>
+
+</body>
+</html>

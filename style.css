@@ -1,0 +1,416 @@
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:"DotGothic16",sans-serif;
+  background:#dff6ff;
+  color:#263238;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.screen{
+  display:none;
+  width:100vw;
+  height:100dvh;
+  padding:16px;
+  overflow:hidden;
+  text-align:center;
+  background:
+    linear-gradient(
+      #dff6ff,
+      #fff4b8 55%,
+      #b8e986
+    );
+}
+
+.screen.active{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.safe-top{
+  height:env(safe-area-inset-top);
+  min-height:12px;
+}
+
+/* ---------------- title ---------------- */
+
+.title-image{
+  width:min(92vw,420px);
+  max-height:38dvh;
+
+  object-fit:contain;
+  image-rendering:pixelated;
+
+  background:#fff;
+
+  border:4px solid #263238;
+  box-shadow:5px 5px 0 #ff9ecb;
+
+  margin-top:8px;
+}
+
+.howto-box,
+.result-box{
+  width:min(92vw,420px);
+
+  margin:14px 0;
+  padding:14px;
+
+  background:rgba(255,255,255,.92);
+
+  border:4px solid #263238;
+  box-shadow:5px 5px 0 #ffe066;
+}
+
+.howto-box h2{
+  margin:0 0 10px;
+  font-size:20px;
+}
+
+.howto-box p{
+  margin:7px 0;
+  font-size:16px;
+}
+
+/* ---------------- buttons ---------------- */
+
+.main-btn,
+.sub-btn,
+.small-btn{
+  border:4px solid #263238;
+  color:#263238;
+  box-shadow:4px 4px 0 #263238;
+}
+
+.main-btn{
+  min-width:180px;
+
+  padding:12px 20px;
+
+  font-size:20px;
+
+  background:#ffef7a;
+}
+
+.sub-btn{
+  padding:10px 16px;
+  font-size:16px;
+  background:#fff;
+}
+
+.small-btn{
+  padding:7px 10px;
+  font-size:14px;
+  background:#fff;
+}
+
+.main-btn:active,
+.sub-btn:active,
+.small-btn:active{
+  transform:translate(4px,4px);
+  box-shadow:none;
+}
+
+/* ---------------- common ---------------- */
+
+.top-bar{
+  width:100%;
+
+  padding-top:
+    calc(
+      env(safe-area-inset-top) + 4px
+    );
+
+  display:flex;
+  justify-content:flex-end;
+}
+
+h2,
+#result-title{
+  margin:8px 0;
+
+  padding:6px 14px;
+
+  background:#fff;
+
+  border:4px solid #263238;
+  box-shadow:4px 4px 0 #7ec8e3;
+
+  font-size:22px;
+}
+
+/* ---------------- draw ---------------- */
+
+.course-description{
+  width:min(92vw,420px);
+
+  margin:6px 0 10px;
+  padding:10px;
+
+  background:#fff;
+
+  border:3px solid #263238;
+}
+
+.draw-wrapper{
+  width:min(92vw,420px);
+
+  padding:12px;
+
+  background:#fff;
+
+  border:4px solid #263238;
+  box-shadow:5px 5px 0 #ff9ecb;
+}
+
+#draw-canvas{
+  width:min(72vw,280px);
+  height:min(72vw,280px);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(0,0,0,.08) 1px,
+      transparent 1px
+    ),
+    #f8fcff;
+
+  background-size:20px 20px;
+
+  border:4px solid #263238;
+
+  touch-action:none;
+}
+
+.draw-buttons{
+  margin-top:12px;
+
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+/* ---------------- race ---------------- */
+
+.race-ui{
+  width:min(94vw,460px);
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-bottom:6px;
+}
+
+#distance-meter{
+  min-width:90px;
+
+  padding:6px 12px;
+
+  background:#fff;
+
+  border:3px solid #263238;
+  box-shadow:3px 3px 0 #7ec8e3;
+
+  font-size:22px;
+}
+
+.stamina-wrap{
+  flex:1;
+
+  padding:5px 8px;
+
+  background:#fff;
+
+  border:3px solid #263238;
+  box-shadow:3px 3px 0 #7ec8e3;
+
+  font-size:13px;
+  text-align:left;
+}
+
+.stamina-bar{
+  width:100%;
+  height:14px;
+
+  margin-top:3px;
+
+  background:#ffe0e0;
+
+  border:2px solid #263238;
+}
+
+#stamina-fill{
+  width:100%;
+  height:100%;
+
+  background:#7ee081;
+
+  transition:width .2s linear;
+}
+
+.race-area{
+  position:relative;
+
+  width:min(94vw,460px);
+
+  height:68dvh;
+  min-height:420px;
+
+  overflow:hidden;
+
+  background:#bfeeff;
+
+  border:4px solid #263238;
+  box-shadow:5px 5px 0 #ffe066;
+}
+
+#race-canvas{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  image-rendering:pixelated;
+
+  z-index:1;
+}
+
+#commentary{
+  position:absolute;
+
+  left:50%;
+  bottom:12px;
+
+  transform:translateX(-50%);
+
+  width:90%;
+
+  padding:10px;
+
+  background:#fff;
+
+  border:3px solid #263238;
+  box-shadow:3px 3px 0 #263238;
+
+  font-size:17px;
+
+  z-index:5;
+}
+
+/* ---------------- result ---------------- */
+
+#result-distance{
+  margin:6px 0;
+
+  font-size:42px;
+}
+
+#result-stars{
+  margin:6px 0 0;
+  color:#8a5400;
+  font-size:24px;
+  letter-spacing:3px;
+}
+
+#result-rank{
+  margin:8px 0;
+
+  font-size:22px;
+}
+
+#result-comment{
+  margin-top:8px;
+
+  font-size:16px;
+}
+
+#result-screen{
+  overflow-y:auto;
+}
+
+.result-buttons{
+  width:min(92%,360px);
+  margin-top:8px;
+  flex-shrink:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  opacity:0;
+  pointer-events:none;
+}
+
+.result-buttons.show{
+  opacity:1;
+  transition:opacity .35s ease;
+}
+
+.result-buttons.ready{
+  pointer-events:auto;
+}
+
+.result-buttons button{
+  min-width:0;
+  min-height:56px;
+  padding:8px 4px;
+  font-size:clamp(14px,4.4vw,17px);
+  overflow-wrap:anywhere;
+}
+
+.result-buttons button:disabled{
+  cursor:default;
+  transform:none;
+  box-shadow:4px 4px 0 #263238;
+}
+
+/* ---------------- mobile ---------------- */
+
+@media(max-height:700px){
+
+  .title-image{
+    max-height:30dvh;
+  }
+
+  #draw-canvas{
+    width:min(62vw,240px);
+    height:min(62vw,240px);
+  }
+
+  .race-area{
+    height:60dvh;
+    min-height:360px;
+  }
+
+  #distance-meter{
+    font-size:18px;
+  }
+
+  #commentary{
+    font-size:15px;
+  }
+
+  h2,
+  #result-title{
+    font-size:20px;
+  }
+}
