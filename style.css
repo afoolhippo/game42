@@ -320,6 +320,16 @@ h2,
 
 /* ---------------- result ---------------- */
 
+.result-image{
+  display:block;
+  width:min(32vw,144px);
+  height:auto;
+  max-height:20dvh;
+  object-fit:contain;
+  image-rendering:pixelated;
+  flex-shrink:0;
+}
+
 #result-distance{
   margin:6px 0;
 
