@@ -62,8 +62,7 @@ button{
   margin-top:8px;
 }
 
-.howto-box,
-.result-box{
+.howto-box{
   width:min(92vw,420px);
 
   margin:14px 0;
@@ -322,36 +321,39 @@ h2,
 
 .result-image{
   display:block;
-  width:min(32vw,144px);
+  width:min(58vw,260px);
   height:auto;
-  max-height:20dvh;
+  max-height:36dvh;
   object-fit:contain;
   image-rendering:pixelated;
   flex-shrink:0;
 }
 
-#result-distance{
-  margin:6px 0;
+.result-box{
+  width:min(100%,420px);
+  margin:4px 0 6px;
+  line-height:1.2;
+}
 
+#result-distance{
+  margin:0;
   font-size:42px;
 }
 
 #result-stars{
-  margin:6px 0 0;
+  margin:2px 0 0;
   color:#8a5400;
   font-size:24px;
   letter-spacing:3px;
 }
 
 #result-rank{
-  margin:8px 0;
-
+  margin:2px 0 0;
   font-size:22px;
 }
 
 #result-comment{
-  margin-top:8px;
-
+  margin:4px 0 0;
   font-size:16px;
 }
 
